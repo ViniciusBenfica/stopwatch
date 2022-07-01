@@ -21,14 +21,14 @@ const DivTimer = styled('div', {
 
 const Input = styled('input', {
   all: 'unset',
-  width: '280px',
+  width: '290px',
   height: "35px",
   fontSize: 15,
   color: "$testando",
-  boxShadow: `0 0 0 1px #038C65`,
+  boxShadow: `0 0 0 1px #470070`,
   borderRadius: "5px",
 
-  '&:focus': { boxShadow: `0 0 0 2px #038C65` },
+  '&:focus': { boxShadow: `0 0 0 2px #470070` },
 
 })
 
@@ -87,18 +87,16 @@ const DivInputs = styled("div", {
 
 const Close = styled(Dialog.Close, {
   all: 'unset',
-  display: 'inline-flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  borderRadius: 4,
+  borderRadius: "5px",
   padding: '0 15px',
   fontSize: 15,
-  lineHeight: 1,
-  fontWeight: 500,
   height: 35,
   float: "right",
-  backgroundColor: "green",
-  color: "yellow",
+  backgroundColor: "#33ABAA",
+  color: "white",
+  marginTop: "10px",
+
+  '&:hover': { backgroundColor: "#2d9999" },
 })
 
 const box = css({
@@ -108,11 +106,10 @@ const box = css({
 const Home: NextPage = () => {
 
 
-
   return (
     <Container>
-      {/* <h1>STUDY TIMER</h1>
-        <DivTimer>
+      <h1>STUDY TIMER</h1>
+       {/*  <DivTimer>
           <div>
             <Stopwatch onClick={() => testando("comecar")} BackgroundColor={'red'}>{count}</Stopwatch>
             <div>HOURS</div>
