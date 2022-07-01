@@ -3,8 +3,17 @@ import { css } from '@stitches/react';
 import * as Dialog from '@radix-ui/react-dialog';
 
 export const Container = styled('div', {
-    display: "flex",
+    background: "red"
   })
+
+export const DivStopwatch = styled('div',{
+   width: "500px",
+   display: "flex",
+   flexDirection: "column",
+   background: "green",
+   alignItems: "center",
+   textAlign: "center",
+})
   
 export const DivTimer = styled('div', {
     display: 'flex',
@@ -71,12 +80,6 @@ export const Content = styled(Dialog.Content, {
     left: "50%",
     lineHeight: "1.5",
     transform: "translate(-50%, -50%)",
-})
-
-export const DivInputs = styled("div", {
-    // display: "flex",
-    // flexDirection: "column",
-    alignContent: "space-around",
 })
 
 export const Close = styled(Dialog.Close, {
