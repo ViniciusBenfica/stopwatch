@@ -2,9 +2,8 @@ import type { NextPage } from 'next'
 import { useEffect, useState } from 'react'
 import * as Dialog from '@radix-ui/react-dialog';
 
-import { 
-  Container,
-  DivTimer,
+import {
+  Timer,
   Input,
   Label,
   Stopwatch,
@@ -12,79 +11,86 @@ import {
   Content,
   Close,
   DivStopwatch,
-  box} from "../styles/index.style"
+  Button,
+  box,
+  Trigger
+} from "../styles/index.style"
 
 const Home: NextPage = () => {
 
   var [count, setCount] = useState<number>(0)
   var [timer, setTimer] = useState<any>()
 
-  var [teste, setTeste] = useState<any>({second:0, minute: 0, hour: 0})
-  
-  
+  var [teste, setTeste] = useState<any>({ second: 0, minute: 0, hour: 0 })
+
+
   var startStopwatch = (opcao: boolean): any => {
-    var mamigu = {second:0, minute: 0, hour: 0}
+    var objectTime = { second: 0, minute: 0, hour: 0 }
 
     if (opcao) {
       setTimer(window.setInterval(() => {
-        mamigu.second++
-      if(mamigu.second >= 60){
-        mamigu.minute++
-        mamigu.second = 0
-      }
+        objectTime.second++
+        if (objectTime.second >= 60) {
+          objectTime.minute++
+          objectTime.second = 0
+        }
 
-      if(mamigu.minute >= 60){
-        mamigu.hour++
-        mamigu.minute = 0
-      }
+        if (objectTime.minute >= 60) {
+          objectTime.hour++
+          objectTime.minute = 0
+        }
 
-      setTeste({second: mamigu.second, minute: mamigu.minute, hour: mamigu.hour })
+        setTeste({ second: objectTime.second, minute: objectTime.minute, hour: objectTime.hour })
       }, 1000))
     } else {
       setTimer(clearInterval(timer))
     }
-    
+
   }
-  
+
   return (
-    <Container>
+    <div>
       <DivStopwatch>
         <h1>STUDY TIMER</h1>
-        <DivTimer>
+        <Timer>
           <div>
-            <Stopwatch onClick={() => startStopwatch(true)} BackgroundColor={'red'}>{teste.second}</Stopwatch>
+            <Stopwatch BackgroundColor={'red'}>{teste.second}</Stopwatch>
             <div>HOURS</div>
           </div>
           <div>
-            <Stopwatch onClick={() => startStopwatch(false)} BackgroundColor={'red'}>{teste.minute}</Stopwatch>
+            <Stopwatch BackgroundColor={'red'}>{teste.minute}</Stopwatch>
             <div>MINUTES</div>
           </div>
           <div>
             <Stopwatch BackgroundColor={'red'}>{teste.hour}</Stopwatch>
             <div>SECONDS</div>
           </div>
-        </DivTimer>
+        </Timer>
         <Dialog.Root>
-          <Dialog.Trigger>Edit stopwatch</Dialog.Trigger>
+          <div className={box({ css: { display: "flex", justifyContent: "space-around", width: "100%" } })}>
+            <Trigger>Edit stopwatch</Trigger>
+            <Button onClick={() => startStopwatch(true)}>Start stopwatch</Button>
+            <Button onClick={() => startStopwatch(false)}>Stop stopwatch</Button>
+          </div>
           <Dialog.Portal>
-            <Overlay/>
+            <Overlay />
             <Content>
-              <Dialog.Title className={box({ css: { fontSize: "16px", marginTop: "0" } })}>Edit stopwatch</Dialog.Title>
+              <Dialog.Title className={box({ css: { fontSize: "16px", marginTop: "0", color: "black" } })}>Edit stopwatch</Dialog.Title>
               <Dialog.Description className={box({ css: { color: "grey", fontSize: "14px", marginTop: "-5px" } })}>Make changes to your stopwatch here. Click save when you're done.</Dialog.Description>
-              <DivTimer className={box({ css: {marginTop: "25px" }})}>
+              <Timer className={box({ css: { marginTop: "25px" } })}>
                 <Label>Name</Label>
                 <Input></Input>
-              </DivTimer>
-              <DivTimer>
+              </Timer>
+              <Timer>
                 <Label>Description</Label>
                 <Input></Input>
-              </DivTimer>
+              </Timer>
               <Close>Save changes</Close>
             </Content>
           </Dialog.Portal>
         </Dialog.Root>
       </DivStopwatch>
-    </Container>
+    </div>
   )
 }
 

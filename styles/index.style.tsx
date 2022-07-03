@@ -2,25 +2,42 @@ import { styled } from './stitches.config'
 import { css } from '@stitches/react';
 import * as Dialog from '@radix-ui/react-dialog';
 
-export const Container = styled('div', {
-    background: "red"
-  })
+export const Trigger = styled(Dialog.Trigger, {
+    all: 'unset',
+    width: "150px",
+    height: "30px",
+    backgroundColor: "#309096",
+    borderRadius: "10px",
 
-export const DivStopwatch = styled('div',{
-   width: "500px",
-   display: "flex",
-   flexDirection: "column",
-   background: "green",
-   alignItems: "center",
-   textAlign: "center",
+    "&:hover": { backgroundColor: "#36a2aa", }
 })
-  
-export const DivTimer = styled('div', {
+
+export const Button = styled('button', {
+    all: 'unset',
+    width: "150px",
+    height: "30px",
+    backgroundColor: "#309096",
+    borderRadius: "10px",
+
+    "&:hover": { backgroundColor: "#36a2aa", }
+})
+
+export const DivStopwatch = styled('div', {
+    width: "500px",
+    display: "flex",
+    flexDirection: "column",
+    background: "#061244",
+    borderRadius: "10px",
+    border: "2px solid black",
+    alignItems: "center",
+    textAlign: "center",
+    padding: "10px"
+})
+
+export const Timer = styled('div', {
     display: 'flex',
     alignItems: 'center',
     margin: "15px 0",
-    // all: 'unset',
-    // gap: 20,
 })
 
 export const Input = styled('input', {
@@ -33,7 +50,6 @@ export const Input = styled('input', {
     borderRadius: "5px",
 
     '&:focus': { boxShadow: `0 0 0 2px #470070` },
-
 })
 
 export const Label = styled('label', {
@@ -41,7 +57,6 @@ export const Label = styled('label', {
     width: '90px',
     textAlign: "right",
     marginRight: "20px",
-    // boxShadow: `0 0 0 1px $testando`,
     borderRadius: 4,
     color: "$testando",
     fontSize: "15px"
@@ -54,11 +69,13 @@ export const Stopwatch = styled('div', {
     textAlign: "center",
     fontSize: "30px",
     borderRadius: '50%',
-    background: `radial-gradient(white 50%, transparent 51%), conic-gradient(blue 250deg, orange 0deg)`,
-    margin: "0 10px",
+    background: `
+    radial-gradient(#061244 65%, transparent 10%), 
+    conic-gradient(#161682 200deg, #b8b8bb 0deg)`,
+    margin: "0px 10px 15px 10px",
     variants: {
         BackgroundColor: {
-        red: { backgroundColor: "red" }
+            red: { backgroundColor: "red" }
         }
     }
 })
