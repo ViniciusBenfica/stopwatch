@@ -31,7 +31,8 @@ export const DivStopwatch = styled('div', {
     border: "2px solid black",
     alignItems: "center",
     textAlign: "center",
-    padding: "10px"
+    padding: "10px",
+    color: "white"
 })
 
 export const Timer = styled('div', {
