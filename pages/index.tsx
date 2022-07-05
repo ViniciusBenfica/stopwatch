@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import * as Dialog from '@radix-ui/react-dialog';
 
 import {
@@ -27,9 +27,13 @@ const Home: NextPage = () => {
   var [timer, setTimer] = useState<any>()
   var [count, setCount] = useState<time>({ seconds: 0, minutes: 0, hours: 0 })
   var [start, setStart] = useState<boolean>(true)
+  var [title, setTitle] = useState<string>("NAME HERE")
 
-  var startStopwatch = (opcao: boolean): any => {
+  var [auxTitle, setAuxTitle] = useState<string>("")
+
+  var startStopwatch = (opcao: boolean): void => {
     var objectTime = count
+
     if (opcao) {
       if (start) {
         setTimer(window.setInterval(() => {
@@ -63,18 +67,18 @@ const Home: NextPage = () => {
   return (
     <div>
       <DivStopwatch>
-        <h1>STUDY TIMER</h1>
+        <h1>{title}</h1>
         <Timer>
           <div>
-            <Stopwatch BackgroundColor={'red'}>{count.seconds}</Stopwatch>
+            <Stopwatch className={box ({ css: { background: `radial-gradient(#061244 65%, transparent 10%), conic-gradient(#161682 ${360 * count.seconds / 60 }deg, #b8b8bb 0deg)`}})}>{count.seconds}</Stopwatch>
             <div>HOURS</div>
           </div>
           <div>
-            <Stopwatch BackgroundColor={'red'}>{count.minutes}</Stopwatch>
+            <Stopwatch className={box ({ css: { background: `radial-gradient(#061244 65%, transparent 10%), conic-gradient(#161682 ${360 * count.minutes / 60 }deg, #b8b8bb 0deg)`}})}>{count.minutes}</Stopwatch>
             <div>MINUTES</div>
           </div>
           <div>
-            <Stopwatch BackgroundColor={'red'}>{count.hours}</Stopwatch>
+            <Stopwatch className={box ({ css: { background: `radial-gradient(#061244 65%, transparent 10%), conic-gradient(#161682 ${360 * count.hours / 12 }deg, #b8b8bb 0deg)`}})}>{count.hours}</Stopwatch>
             <div>SECONDS</div>
           </div>
         </Timer>
@@ -91,13 +95,13 @@ const Home: NextPage = () => {
               <Dialog.Description className={box({ css: { color: "grey", fontSize: "14px", marginTop: "-5px" } })}>Make changes to your stopwatch here. Click save when you're done.</Dialog.Description>
               <Timer className={box({ css: { marginTop: "25px" } })}>
                 <Label>Name</Label>
-                <Input></Input>
+                <Input type="text" onChange={(event) => setAuxTitle(event.target.value)}></Input>
               </Timer>
               <Timer>
                 <Label>Description</Label>
                 <Input></Input>
               </Timer>
-              <Close>Save changes</Close>
+              <Close  onClick={() => setTitle(auxTitle)}>Save changes</Close>
             </Content>
           </Dialog.Portal>
         </Dialog.Root>

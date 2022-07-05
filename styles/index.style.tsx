@@ -9,7 +9,7 @@ export const Trigger = styled(Dialog.Trigger, {
     backgroundColor: "#309096",
     borderRadius: "10px",
 
-    "&:hover": { backgroundColor: "#36a2aa", }
+    '&:hover': { backgroundColor: "#36a2aa", }
 })
 
 export const Button = styled('button', {
@@ -19,7 +19,7 @@ export const Button = styled('button', {
     backgroundColor: "#309096",
     borderRadius: "10px",
 
-    "&:hover": { backgroundColor: "#36a2aa", }
+    '&:hover': { backgroundColor: "#36a2aa", }
 })
 
 export const DivStopwatch = styled('div', {
@@ -69,15 +69,7 @@ export const Stopwatch = styled('div', {
     textAlign: "center",
     fontSize: "30px",
     borderRadius: '50%',
-    background: `
-    radial-gradient(#061244 65%, transparent 10%), 
-    conic-gradient(#161682 200deg, #b8b8bb 0deg)`,
     margin: "0px 10px 15px 10px",
-    variants: {
-        BackgroundColor: {
-            red: { backgroundColor: "red" }
-        }
-    }
 })
 
 export const Overlay = styled(Dialog.Overlay, {
